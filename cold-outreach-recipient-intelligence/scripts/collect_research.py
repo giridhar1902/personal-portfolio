@@ -18,22 +18,20 @@ import requests
 from googleapiclient.discovery import build
 from googleapiclient.errors import HttpError as GoogleHttpError
 from youtube_transcript_api import YouTubeTranscriptApi
+import praw
+from dotenv import load_dotenv
+
+load_dotenv()
 
 ROOT = Path(__file__).resolve().parent.parent
 YOUTUBE_DIR = ROOT / "research" / "youtube-transcripts"
 REDDIT_OUTPUT = ROOT / "research" / "other" / "reddit-findings.md"
 
-REDDIT_USER_AGENT = os.environ.get(
-    "REDDIT_USER_AGENT",
-    "python:cold-outreach-recipient-intelligence:v1.0 (by /u/research)",
-)
-REDDIT_DELAY_SECONDS = 1.5
-REDDIT_SESSION = requests.Session()
-REDDIT_SESSION.headers.update(
-    {
-        "User-Agent": REDDIT_USER_AGENT,
-        "Accept": "application/json",
-    }
+# PRAW Reddit client
+reddit = praw.Reddit(
+    client_id=os.environ.get("REDDIT_CLIENT_ID"),
+    client_secret=os.environ.get("REDDIT_CLIENT_SECRET"),
+    user_agent=os.environ.get("REDDIT_USER_AGENT")
 )
 
 YOUTUBE_SOURCES = [
@@ -76,28 +74,7 @@ YOUTUBE_SOURCES = [
     },
 ]
 
-REDDIT_SEARCHES = [
-    {
-        "query": "cold email worst spam screenshot founder",
-        "subreddits": ["sales", "SaaS"],
-    },
-    {
-        "query": "pitch slap pitch slapped vendor ATS HR tech",
-        "subreddits": ["sales", "recruiting"],
-    },
-    {
-        "query": "cold email rant roast bad",
-        "subreddits": ["sales", "SaaS"],
-    },
-    {
-        "query": "recruiter spam message outreach LinkedIn",
-        "subreddits": ["recruitinghell", "recruiting"],
-    },
-    {
-        "query": "reacting cold emails founder CEO VP",
-        "subreddits": ["sales", "SaaS"],
-    },
-]
+# Reddit searches configuration removed in favor of search_queries in collect_reddit_findings()
 
 
 @dataclass
@@ -344,166 +321,93 @@ def collect_youtube_transcripts() -> int:
     return saved_count
 
 
-def reddit_request(url: str) -> dict[str, Any] | None:
-    for attempt in range(2):
-        try:
-            response = REDDIT_SESSION.get(url, timeout=20)
-            if response.status_code == 429:
-                print(f"RETRY: Reddit rate limited for {url}")
-                time.sleep(5)
-                continue
+def collect_reddit_findings() -> bool:
+    search_queries = [
+        ("cold email worst spam screenshot founder", ["sales", "SaaS"]),
+        ("pitch slap vendor ATS HR tech", ["sales", "recruiting"]),
+        ("cold email rant roast bad", ["sales", "SaaS"]),
+        ("recruiter spam message outreach LinkedIn", ["recruitinghell", "recruiting"]),
+        ("reacting cold emails founder CEO VP", ["sales", "SaaS"]),
+    ]
 
-            content_type = response.headers.get("Content-Type", "")
-            if response.status_code != 200 or "application/json" not in content_type:
-                raise requests.HTTPError(
-                    f"HTTP {response.status_code} ({content_type or 'unknown content type'})"
-                )
-
-            return response.json()
-        except (requests.RequestException, json.JSONDecodeError, ValueError) as exc:
-            if attempt == 0:
-                print(f"RETRY: Reddit request failed for {url} ({exc})")
-                time.sleep(2)
-            else:
-                print(f"SKIP: Reddit request failed for {url} ({exc})")
-                return None
-
-    return None
-
-
-def fetch_reddit_posts(query: str, subreddits: list[str]) -> list[dict[str, Any]]:
-    posts_by_id: dict[str, dict[str, Any]] = {}
-
-    for subreddit in subreddits:
-        encoded_query = quote(query)
-        url = (
-            f"https://www.reddit.com/r/{subreddit}/search.json"
-            f"?q={encoded_query}&restrict_sr=1&sort=relevance&limit=10"
-        )
-        payload = reddit_request(url)
-        time.sleep(REDDIT_DELAY_SECONDS)
-
-        if not payload:
-            continue
-
-        children = payload.get("data", {}).get("children", [])
-        for child in children:
-            data = child.get("data", {})
-            post_id = data.get("id")
-            if not post_id:
-                continue
-
-            permalink = data.get("permalink", "")
-            post_url = f"https://www.reddit.com{permalink}" if permalink else data.get("url", "")
-
-            posts_by_id[post_id] = {
-                "id": post_id,
-                "title": data.get("title", "").strip(),
-                "url": post_url,
-                "subreddit": data.get("subreddit", subreddit),
-                "score": data.get("score", 0),
-            }
-
-    ranked_posts = sorted(posts_by_id.values(), key=lambda post: post["score"], reverse=True)
-    return ranked_posts[:10]
-
-
-def fetch_top_comments(subreddit: str, post_id: str, limit: int = 3) -> list[str]:
-    url = (
-        f"https://www.reddit.com/r/{subreddit}/comments/{post_id}.json"
-        f"?sort=top&limit={limit}"
-    )
-    payload = reddit_request(url)
-    time.sleep(REDDIT_DELAY_SECONDS)
-
-    if not payload or len(payload) < 2:
-        return []
-
-    comments: list[str] = []
-    children = payload[1].get("data", {}).get("children", [])
-
-    for child in children:
-        if child.get("kind") != "t1":
-            continue
-        body = child.get("data", {}).get("body", "").strip()
-        if body and body not in ("[deleted]", "[removed]"):
-            comments.append(re.sub(r"\s+", " ", body))
-        if len(comments) >= limit:
-            break
-
-    return comments
-
-
-def format_reddit_markdown(results: list[tuple[str, list[dict[str, Any]]]]) -> str:
     lines = [
         "# Reddit Findings",
         "",
-        "Recipient-side cold outreach sentiment collected via Reddit public search.",
+        "Recipient-side cold outreach sentiment collected via Reddit public search using the PRAW API.",
         "",
     ]
 
-    for query, posts in results:
-        lines.append(f"## {query}")
+    total_posts_found = 0
+
+    for query, subreddits in search_queries:
+        lines.append(f"## Query: {query}")
         lines.append("")
 
-        if not posts:
-            lines.append("_No posts found for this search._")
-            lines.append("")
-            lines.append("---")
-            lines.append("")
-            continue
+        for subreddit_name in subreddits:
+            print(f"Searching r/{subreddit_name} for '{query}'...")
+            try:
+                subreddit = reddit.subreddit(subreddit_name)
+                results = subreddit.search(query, limit=5, sort="relevance")
+                
+                posts_list = list(results)
+                if not posts_list:
+                    print(f"  No posts found in r/{subreddit_name}")
+                    continue
+                
+                for post in posts_list:
+                    total_posts_found += 1
+                    print(f"  Found post: {post.title[:50]}...")
+                    
+                    full_url = f"https://www.reddit.com{post.permalink}"
+                    
+                    lines.append(f"### Post: {post.title}")
+                    lines.append(f"Subreddit: r/{post.subreddit.display_name}")
+                    lines.append(f"URL: {full_url}")
+                    lines.append(f"Upvotes: {post.score}")
+                    lines.append("")
+                    lines.append("**Top Comments:**")
+                    
+                    post.comment_sort = "top"
+                    try:
+                        post.comments.replace_more(limit=0)
+                        comments = []
+                        for comment in post.comments:
+                            if len(comments) >= 3:
+                                break
+                            body = getattr(comment, "body", "").strip()
+                            if body and body not in ("[deleted]", "[removed]"):
+                                cleaned = re.sub(r"\s+", " ", body)
+                                comments.append(cleaned)
+                        
+                        if comments:
+                            for idx, comment in enumerate(comments, start=1):
+                                lines.append(f"{idx}. {comment}")
+                        else:
+                            lines.append("1. _No comments available._")
+                    except Exception as comm_exc:
+                        print(f"  Failed to fetch comments for post {post.id}: {comm_exc}")
+                        lines.append("1. _Failed to load comments._")
+                    
+                    lines.append("")
+                    lines.append("---")
+                    lines.append("")
+                    
+            except Exception as search_exc:
+                print(f"ERROR: Search failed on r/{subreddit_name} for '{query}': {search_exc}")
+                continue
 
-        for post in posts:
-            comments = fetch_top_comments(post["subreddit"], post["id"])
-            lines.append(f"### Post: {post['title']}")
-            lines.append(f"Subreddit: r/{post['subreddit']}")
-            lines.append(f"URL: {post['url']}")
-            lines.append(f"Upvotes: {post['score']}")
-            lines.append("")
-            lines.append("**Top Comments:**")
-
-            if comments:
-                for index, comment in enumerate(comments, start=1):
-                    lines.append(f"{index}. {comment}")
-            else:
-                lines.append("1. _No comments available._")
-
-            lines.append("")
-            lines.append("---")
-            lines.append("")
-
-    return "\n".join(lines).rstrip() + "\n"
-
-
-def collect_reddit_findings() -> bool:
-    results: list[tuple[str, list[dict[str, Any]]]] = []
-
-    for search in REDDIT_SEARCHES:
-        print(f"\n--- Reddit search: {search['query']} ---")
-        posts = fetch_reddit_posts(search["query"], search["subreddits"])
-        print(f"Found {len(posts)} posts")
-        results.append((search["query"], posts))
-
-    total_posts = sum(len(posts) for _, posts in results)
-    if total_posts == 0:
-        print(
-            "WARN: No Reddit posts collected; leaving existing "
-            f"{REDDIT_OUTPUT.name} unchanged"
-        )
+    if total_posts_found == 0:
+        print("WARN: No Reddit posts collected; leaving existing file unchanged")
         return False
 
-    markdown = format_reddit_markdown(results)
+    markdown_content = "\n".join(lines).rstrip() + "\n"
     REDDIT_OUTPUT.parent.mkdir(parents=True, exist_ok=True)
-    REDDIT_OUTPUT.write_text(markdown, encoding="utf-8")
+    REDDIT_OUTPUT.write_text(markdown_content, encoding="utf-8")
     print(f"\nSAVED: {REDDIT_OUTPUT}")
     return True
 
 
 def main() -> int:
-    print("Collecting YouTube transcripts...")
-    youtube_saved = collect_youtube_transcripts()
-    print(f"\nYouTube transcripts saved: {youtube_saved}")
-
     print("\nCollecting Reddit findings...")
     collect_reddit_findings()
 
