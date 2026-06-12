@@ -78,7 +78,7 @@ When APIs failed, switched to Gemini Deep Research to surface expert profiles, r
 - [x] Expert selection and annotation (10 experts, all annotated in `sources.md`)
 - [x] YouTube transcripts (Gergely Orosz — 2 videos with timestamps)
 - [x] Reddit sentiment research (AI-assisted, 15 curated findings)
-- [x] LinkedIn post collection & manual verification (5/5 profiles verified/checked, findings saved)
+- [x] LinkedIn post collection & manual verification (10/10 profiles verified/checked, findings saved)
 - [x] Synthesis playbook drafted
 - [ ] YouTube transcripts for remaining 9 experts
 - [ ] Newsletter excerpts (Recruiting Brainfood, Pragmatic Engineer)

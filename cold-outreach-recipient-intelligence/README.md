@@ -48,7 +48,7 @@ cold-outreach-recipient-intelligence/
 
 ## Research Status
 
-- [x] LinkedIn posts collected & verified (5/5 profiles manually verified/checked)
+- [x] LinkedIn posts collected & verified (10/10 profiles manually verified/checked)
 - [ ] YouTube / podcast transcripts collected
 - [x] Reddit boolean searches run
 - [ ] Per-expert synthesis notes
