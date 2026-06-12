@@ -51,7 +51,6 @@ cold-outreach-recipient-intelligence/
 - [x] LinkedIn posts collected (all 10 experts)
 - [ ] YouTube / podcast transcripts collected
 - [x] Reddit boolean searches run
-- [ ] Newsletter excerpts pulled
 - [ ] Per-expert synthesis notes
 - [x] Final playbook drafted
 
