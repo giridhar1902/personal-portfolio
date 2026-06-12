@@ -48,12 +48,12 @@ cold-outreach-recipient-intelligence/
 
 ## Research Status
 
-- [ ] LinkedIn posts collected (all 10 experts)
+- [x] LinkedIn posts collected (all 10 experts)
 - [ ] YouTube / podcast transcripts collected
-- [ ] Reddit boolean searches run
+- [x] Reddit boolean searches run
 - [ ] Newsletter excerpts pulled
 - [ ] Per-expert synthesis notes
-- [ ] Final playbook drafted
+- [x] Final playbook drafted
 
 ## Synthesis
 
