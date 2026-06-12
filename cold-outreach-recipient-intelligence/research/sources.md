@@ -17,7 +17,7 @@ Working document. Each entry covers one expert studied as a **recipient** of col
 
 **Best content format:** LinkedIn posts (frequent, detailed), Wynter blog posts, podcast interviews
 
-**Status:** [x] AI-synthesized content collected — manual verification pending
+**Status:** [x] Profile checked via logged-in browser — external podcast and newsletter content verified
 
 ---
 
