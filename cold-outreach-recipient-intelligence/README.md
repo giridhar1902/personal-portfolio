@@ -10,7 +10,7 @@ The 10 experts here are founders, VPs, and HR leaders who are bombarded with col
 
 ## Why This Matters for 100hires
 
-100hires sells to SMB hiring managers and founders. Their product includes AI email composer, candidate outreach sequences, and deliverability tools. Understanding what their customers' prospects actually hate and respond to is more valuable than any sender-side framework.
+100hires sells to SMB hiring managers and founders. Their product includes AI email composer, candidate outreach sequences, and deliverability tools. These are not 100hires' users — they are 100hires' buyers. This playbook is for 100hires' internal SDRs, mapping the exact deletion triggers and cognitive friction of the SMB founders and TA leaders they cold pitch daily to sell ATS software.
 
 ## Expert List
 
