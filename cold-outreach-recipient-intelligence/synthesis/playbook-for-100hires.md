@@ -39,7 +39,7 @@ Respect their time more than you value your quota.
 
 - **Peep Laja** (CEO Wynter/CXL) — linkedin.com/in/peeplaja — Tests B2B messaging; documents what buyers ignore.
 - **Andrew Gazdecki** (CEO Acquire.com) — linkedin.com/in/agazdecki — Founder inbox at scale; rejects buzzword-heavy pitches.
-- **Mac Reddin** (CEO Commsor) — linkedin.com/in/macreddin — Advocates Go-to-Network; vocal about spray-and-pray failure.
+- **Mac Reddin** (CEO Commsor) — linkedin.com/in/mac-reddin — Advocates Go-to-Network; vocal about spray-and-pray failure.
 - **Dave Gerhardt** (Founder Exit Five) — linkedin.com/in/davegerhardt — Former CMO; champions extreme brevity and one-line emails.
 - **Amanda Natividad** (VP Marketing SparkToro) — linkedin.com/in/amandanat — Audience research expert; critiques fake personalization.
 - **Melissa Grabiner** (Global TA Leader) — linkedin.com/in/melissa-grabiner — #1 HR creator; daily hiring manager perspective on vendor pitches.

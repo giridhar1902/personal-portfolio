@@ -18,7 +18,7 @@ The 10 experts here are founders, VPs, and HR leaders who are bombarded with col
 |------|------|----------|-----------------|
 | Peep Laja | CEO, Wynter / CXL | [linkedin.com/in/peeplaja](https://www.linkedin.com/in/peeplaja/) | Runs message-testing research; documents what buyers ignore and why |
 | Andrew Gazdecki | CEO, Acquire.com | [linkedin.com/in/agazdecki](https://www.linkedin.com/in/agazdecki/) | Founder inbox at scale; posts about what M&A outreach gets deleted |
-| Mac Reddin | CEO, Commsor | [linkedin.com/in/macreddin](https://www.linkedin.com/in/macreddin/) | Community-led founder; vocal about bad vendor and recruiter DMs |
+| Mac Reddin | CEO, Commsor | [linkedin.com/in/mac-reddin](https://www.linkedin.com/in/mac-reddin/) | Community-led founder; vocal about bad vendor and recruiter DMs |
 | Dave Gerhardt | Founder, Exit Five | [linkedin.com/in/davegerhardt](https://www.linkedin.com/in/davegerhardt/) | B2B marketing leader; chronicled inbox fatigue and reply triggers |
 | Amanda Natividad | VP Marketing, SparkToro | [linkedin.com/in/amandanat](https://www.linkedin.com/in/amandanat/) | Audience research expert; writes from the recipient side of pitches |
 | Melissa Grabiner | Global TA Leader | [linkedin.com/in/melissa-grabiner](https://www.linkedin.com/in/melissa-grabiner/) | #1 HR creator; daily hiring-manager perspective on recruiter outreach |
@@ -48,7 +48,7 @@ cold-outreach-recipient-intelligence/
 
 ## Research Status
 
-- [x] LinkedIn posts collected (all 10 experts)
+- [x] LinkedIn posts collected & verified (5/5 profiles manually verified/checked)
 - [ ] YouTube / podcast transcripts collected
 - [x] Reddit boolean searches run
 - [ ] Per-expert synthesis notes

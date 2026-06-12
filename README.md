@@ -24,7 +24,7 @@ Deliberately avoided obvious sales coach names. Picked practitioners who receive
 |------|------|----------|-----------------|
 | Peep Laja | CEO, Wynter / CXL | [linkedin.com/in/peeplaja](https://www.linkedin.com/in/peeplaja/) | Runs message-testing research; documents why pitches fail from the recipient side |
 | Andrew Gazdecki | CEO, Acquire.com | [linkedin.com/in/agazdecki](https://www.linkedin.com/in/agazdecki/) | Founder inbox at scale; posts about what M&A outreach gets deleted |
-| Mac Reddin | CEO, Commsor | [linkedin.com/in/macreddin](https://www.linkedin.com/in/macreddin/) | Community-led founder; vocal about bad vendor and recruiter DMs |
+| Mac Reddin | CEO, Commsor | [linkedin.com/in/mac-reddin](https://www.linkedin.com/in/mac-reddin/) | Community-led founder; vocal about bad vendor and recruiter DMs |
 | Dave Gerhardt | Founder, Exit Five | [linkedin.com/in/davegerhardt](https://www.linkedin.com/in/davegerhardt/) | B2B marketing leader; chronicled inbox fatigue and reply triggers |
 | Amanda Natividad | VP Marketing, SparkToro | [linkedin.com/in/amandanat](https://www.linkedin.com/in/amandanat/) | Audience research expert; writes from the recipient side of pitches |
 | Melissa Grabiner | Global TA Leader | [linkedin.com/in/melissa-grabiner](https://www.linkedin.com/in/melissa-grabiner/) | #1 HR creator; daily hiring-manager perspective on recruiter outreach |
@@ -78,9 +78,8 @@ When APIs failed, switched to Gemini Deep Research to surface expert profiles, r
 - [x] Expert selection and annotation (10 experts, all annotated in `sources.md`)
 - [x] YouTube transcripts (Gergely Orosz — 2 videos with timestamps)
 - [x] Reddit sentiment research (AI-assisted, 15 curated findings)
-- [x] LinkedIn post collection (AI-synthesized — manual verification pending)
+- [x] LinkedIn post collection & manual verification (5/5 profiles verified/checked, findings saved)
 - [x] Synthesis playbook drafted
-- [ ] Manual LinkedIn post verification against actual profiles
 - [ ] YouTube transcripts for remaining 9 experts
 - [ ] Newsletter excerpts (Recruiting Brainfood, Pragmatic Engineer)
 

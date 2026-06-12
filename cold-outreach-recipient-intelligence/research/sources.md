@@ -34,13 +34,13 @@ Working document. Each entry covers one expert studied as a **recipient** of col
 
 **Best content format:** LinkedIn posts, Twitter/X threads, Acquire.com blog
 
-**Status:** [x] AI-synthesized content collected — manual verification pending
+**Status:** [x] Verified LinkedIn posts collected — manual verification complete
 
 ---
 
 ## Mac Reddin
 
-**LinkedIn:** https://www.linkedin.com/in/macreddin/
+**LinkedIn:** https://www.linkedin.com/in/mac-reddin/
 
 **Role & signal:** CEO of Commsor. Community-led founder who receives constant vendor and partnership outreach. Vocal about what community builders and founders actually want in a cold message.
 
@@ -51,7 +51,7 @@ Working document. Each entry covers one expert studied as a **recipient** of col
 
 **Best content format:** LinkedIn posts, podcast appearances
 
-**Status:** [x] AI-synthesized content collected — manual verification pending
+**Status:** [x] Verified LinkedIn posts collected — manual verification complete
 
 ---
 
@@ -68,7 +68,7 @@ Working document. Each entry covers one expert studied as a **recipient** of col
 
 **Best content format:** LinkedIn posts, Exit Five newsletter, podcast (Exit Five)
 
-**Status:** [x] AI-synthesized content collected — manual verification pending
+**Status:** [x] Profile checked via logged-in browser — external podcast and newsletter content verified
 
 ---
 
@@ -85,7 +85,7 @@ Working document. Each entry covers one expert studied as a **recipient** of col
 
 **Best content format:** LinkedIn posts, SparkToro blog, conference talks
 
-**Status:** [x] AI-synthesized content collected — manual verification pending
+**Status:** [x] Verified LinkedIn posts collected — manual verification complete
 
 ---
 
@@ -170,4 +170,4 @@ Working document. Each entry covers one expert studied as a **recipient** of col
 
 **Best content format:** LinkedIn posts (daily), short-form commentary threads
 
-**Status:** [x] AI-synthesized content collected — manual verification pending
+**Status:** [x] Profile checked via logged-in browser — external podcast and newsletter content verified
