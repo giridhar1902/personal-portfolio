@@ -17,7 +17,7 @@ Working document. Each entry covers one expert studied as a **recipient** of col
 
 **Best content format:** LinkedIn posts (frequent, detailed), Wynter blog posts, podcast interviews
 
-**Status:** [ ] Not started
+**Status:** [x] AI-synthesized content collected — manual verification pending
 
 ---
 
@@ -34,7 +34,7 @@ Working document. Each entry covers one expert studied as a **recipient** of col
 
 **Best content format:** LinkedIn posts, Twitter/X threads, Acquire.com blog
 
-**Status:** [ ] Not started
+**Status:** [x] AI-synthesized content collected — manual verification pending
 
 ---
 
@@ -51,7 +51,7 @@ Working document. Each entry covers one expert studied as a **recipient** of col
 
 **Best content format:** LinkedIn posts, podcast appearances
 
-**Status:** [ ] Not started
+**Status:** [x] AI-synthesized content collected — manual verification pending
 
 ---
 
@@ -68,7 +68,7 @@ Working document. Each entry covers one expert studied as a **recipient** of col
 
 **Best content format:** LinkedIn posts, Exit Five newsletter, podcast (Exit Five)
 
-**Status:** [ ] Not started
+**Status:** [x] AI-synthesized content collected — manual verification pending
 
 ---
 
@@ -85,7 +85,7 @@ Working document. Each entry covers one expert studied as a **recipient** of col
 
 **Best content format:** LinkedIn posts, SparkToro blog, conference talks
 
-**Status:** [ ] Not started
+**Status:** [x] AI-synthesized content collected — manual verification pending
 
 ---
 
@@ -102,7 +102,7 @@ Working document. Each entry covers one expert studied as a **recipient** of col
 
 **Best content format:** LinkedIn posts (very active), short-form video
 
-**Status:** [ ] Not started
+**Status:** [x] AI-synthesized content collected — manual verification pending
 
 ---
 
@@ -119,7 +119,7 @@ Working document. Each entry covers one expert studied as a **recipient** of col
 
 **Best content format:** Recruiting Brainfood newsletter, LinkedIn posts, conference curation
 
-**Status:** [ ] Not started
+**Status:** [x] AI-synthesized content collected — manual verification pending
 
 ---
 
@@ -136,7 +136,7 @@ Working document. Each entry covers one expert studied as a **recipient** of col
 
 **Best content format:** The Pragmatic Engineer newsletter, LinkedIn posts, Twitter/X
 
-**Status:** [ ] Not started
+**Status:** [x] AI-synthesized content collected — manual verification pending
 
 ---
 
@@ -153,7 +153,7 @@ Working document. Each entry covers one expert studied as a **recipient** of col
 
 **Best content format:** LinkedIn posts, Full Stack Recruiter blog, book excerpts
 
-**Status:** [ ] Not started
+**Status:** [x] AI-synthesized content collected — manual verification pending
 
 ---
 
@@ -170,4 +170,4 @@ Working document. Each entry covers one expert studied as a **recipient** of col
 
 **Best content format:** LinkedIn posts (daily), short-form commentary threads
 
-**Status:** [ ] Not started
+**Status:** [x] AI-synthesized content collected — manual verification pending

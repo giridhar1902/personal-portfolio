@@ -1,3 +1,5 @@
+> ⚠️ Content sourced via Gemini Deep Research — AI-synthesized approximations, not verified against original LinkedIn posts. Manual verification pending.
+
 # Jan Tegze — LinkedIn Posts
 
 Collected: June 2026
